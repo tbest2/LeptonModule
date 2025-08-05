@@ -6,11 +6,7 @@
 #include "SPI.h"
 #include "Lepton_I2C.h"
 
-// Tramanh edits start
-
 #include <cstdlib>
-
-// Tramanh edits end
 
 #define PACKET_SIZE 164
 #define PACKET_SIZE_UINT16 (PACKET_SIZE / 2)
@@ -301,8 +297,6 @@ void LeptonThread::run()
 				}
 				myImage.setPixel(column, row, color);
 
-				// Tramanh edits start
-
 				// shows temp at blue purple ish center dot
 
 				// f((row == 30) && (column == 40)){
@@ -312,8 +306,6 @@ void LeptonThread::run()
 				// printf("raw data:%d    celsius:%f \n", valueFrameBuffer, cels);
 
 				//}
-
-				// Tramanh edits end
 			}
 		}
 
@@ -334,8 +326,6 @@ void LeptonThread::run()
 void LeptonThread::performFFC()
 {
 
-	// Tramanh edits start
-
 	// save current visual to run human recognition YOLO model from python file
 
 	myImage.save("testimage.jpg");
@@ -343,7 +333,7 @@ void LeptonThread::performFFC()
 
 	system("python yoloDetect.py");
 
-	// Tramanh edits end
+	//
 
 	// perform FFC
 	lepton_perform_ffc();

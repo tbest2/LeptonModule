@@ -2,19 +2,19 @@
 from ultralytics import YOLO
 
 
-#loads YOLO model, change this to change update the YOLO model
-model = YOLO("/home/ubuntu/Downloads/thermal/best.pt")
+#loads yolo model
+model = YOLO("/home/ubuntu/Downloads/thermal/LeptonModule/software/raspberrypi_video/best.pt")
 
-
-#this is the file the YOLO model is detecting humans in, the variable will save the results
+#this runs and saves the YOLO model results to this variable
+#you can also run the model on an entire folder of images much faster per image than a singular image
+#it could also work on videos, but would be too slow on a RB3b 
 results = model ("/home/ubuntu/Downloads/thermal/LeptonModule/software/raspberrypi_video/testimage.jpg")
 
-
-#this shows the results of the YOLO model with bounding boxes visually
+#this shows the visuals with the bounding boxes 
 results[0].show()
 
-
-#this prints the bounding boxes of the YOLO model results
+#this prints the bounding boxes to terminal
+#print(f"bounding boxes: {results[0].boxes}")
 print(f"bounding boxes: {results[0].boxes.xyxy}")
 
 
